@@ -10,10 +10,10 @@ phases:
       java: corretto11
     commands:
       - echo "Installing Maven..."
-      - wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
-      - sudo mkdir -p /etc/yum.repos.d/
-      - sudo mv epel-apache-maven.repo /etc/yum.repos.d/
-      - sudo yum -y install apache-maven  
+      - sudo apt-get update
+      - sudo apt-get install -y maven
+      - mvn -version
+      - echo "maven installed successfully..."
 pre_build:
     commands:
       - echo "Installing dependencies..."
