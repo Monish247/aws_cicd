@@ -11,6 +11,7 @@ phases:
     commands:
       - echo "Installing Maven..."
       - wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
+      - sudo mkdir -p /etc/yum.repos.d/
       - sudo mv epel-apache-maven.repo /etc/yum.repos.d/
       - sudo yum -y install apache-maven  
 pre_build:
