@@ -1,9 +1,11 @@
 version: 0.2
-env: 
+
+env:
   parameter-store:
-      DOCKER_REGISTRY_USERNAME: /myapp/docker-credentials/username
-      DOCKER_REGISTRY_PASSWORD: /myapp/docker-credentials/password
-      DOCKER_REGISTRY_URL: /myapp/docker-registry/url
+    DOCKER_REGISTRY_USERNAME: /myapp/docker-credentials/username
+    DOCKER_REGISTRY_PASSWORD: /myapp/docker-credentials/password
+    DOCKER_REGISTRY_URL: /myapp/docker-registry/url
+
 phases:
   install:
     runtime-versions:
@@ -14,16 +16,19 @@ phases:
       - sudo apt-get install -y maven
       - mvn -version
       - echo "maven installed successfully..."
-pre_build:
+
+  pre_build:
     commands:
       - echo "Installing dependencies..."
-build:
+
+  build:
     commands:
       - echo "Build started"
       - mvn clean install
       - ls target
-      - echo "Build completed "
-post_build:
+      - echo "Build completed"
+
+  post_build:
     commands:
       - cd spring-boot-app/
       - echo "running tests"
@@ -32,8 +37,8 @@ post_build:
       - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/sprint_boot_shopping:latest" .
       - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/sprint_boot_shopping:latest"
       - echo "Build completed successfully!"
+
 artifacts:
   files:
     - target/*.jar
-  discard-paths: yes      
-
+  discard-paths: yes
