@@ -19,9 +19,10 @@ pre_build:
       - echo "Installing dependencies..."
 build:
     commands:
-      - echo "Build started on `date`"
+      - echo "Build started"
       - mvn clean install
-      - echo "Build completed on `date`"
+      - ls target
+      - echo "Build completed "
 post_build:
     commands:
       - cd spring-boot-app/
