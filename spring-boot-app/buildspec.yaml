@@ -35,8 +35,8 @@ phases:
       - echo "Building Docker image..."
       - DOCKER_REGISTRY_URL=$(echo "$DOCKER_REGISTRY_URL" | tr -d '\n\r')
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
-      - docker build -t "$DOCKER_REGISTRY_USERNAME/sprint_boot_shopping:latest" .
-      - docker push "$DOCKER_REGISTRY_USERNAME/sprint_boot_shopping:latest"
+      - docker build -t "$CLEAN_DOCKER_REGISTRY_USERNAME/sprint_boot_shopping:latest" .
+      - docker push "$CLEAN_DOCKER_REGISTRY_USERNAME/sprint_boot_shopping:latest"
       - echo "Build completed successfully!"
 
 artifacts:
